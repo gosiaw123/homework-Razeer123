@@ -69,7 +69,7 @@ def no_new_cases_count(day: int, month: int, year: int = 2020) -> int:
     """
     
     # Your code goes here (remove pass)
-    if (day - 1)
+    if (day - 1):
       data = f"{month}/{day}/20"
       poprzedniaData = f"{month}/{day - 1}/20"
     else:
