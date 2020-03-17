@@ -48,8 +48,8 @@ def top5_countries_by_date(day: int, month: int, year: int = 2020) -> List[str]:
     :return: A list of strings with the names of the coutires
     """
 
-    # Your code goes here (remove pass)
-    pass
+    dane = confirmed_cases[["Country/Region", f"{month}/{day}/{year%100}"]].groupby(["Country/Region"]).sum().sort_values(by=f"{month}/{day}/{year%100}", ascending = False).head(5).index.tolist()
+    return dane
 
 
 def no_new_cases_count(day: int, month: int, year: int = 2020) -> int:
