@@ -28,8 +28,8 @@ def poland_cases_by_date(day: int, month: int, year: int = 2020) -> int:
     :return: Number of cases on a given date as an integer
     """
    
-  dane = confirmed_cases.loc[confirmed_cases["Country/Region"]=="Poland"][f"{month}/{day}/{year%100}"].values[0]
-  return dane
+    dane = confirmed_cases.loc[confirmed_cases["Country/Region"]=="Poland"][f"{month}/{day}/{year%100}"].values[0]
+    return dane
 
 
 def top5_countries_by_date(day: int, month: int, year: int = 2020) -> List[str]:
@@ -48,8 +48,8 @@ def top5_countries_by_date(day: int, month: int, year: int = 2020) -> List[str]:
     :return: A list of strings with the names of the coutires
     """
 
-  dane = confirmed_cases[["Country/Region", f"{month}/{day}/{year%100}"]].groupby(["Country/Region"]).sum().sort_values(by=f"{month}/{day}/{year%100}", ascending = False).head(5).index.tolist()
-  return dane
+    dane = confirmed_cases[["Country/Region", f"{month}/{day}/{year%100}"]].groupby(["Country/Region"]).sum().sort_values(by=f"{month}/{day}/{year%100}", ascending = False).head(5).index.tolist()
+    return dane
 
 
 def no_new_cases_count(day: int, month: int, year: int = 2020) -> int:
@@ -69,8 +69,8 @@ def no_new_cases_count(day: int, month: int, year: int = 2020) -> int:
     """
     
     # Your code goes here (remove pass)
-  if (day - 1) <= 0:
-    return
-  poprzedniaData = f"{month}/{day - 1}/{year%100}"
-  data = f"{month}/{day}/{year%100}"
-  return ((confirmed_cases[data] - confirmed_cases[poprzedniaData]) != 0).sum()
+    if (day - 1) <= 0:
+      return
+    poprzedniaData = f"{month}/{day - 1}/{year%100}"
+    data = f"{month}/{day}/{year%100}"
+    return ((confirmed_cases[data] - confirmed_cases[poprzedniaData]) != 0).sum()
