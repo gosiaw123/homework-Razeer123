@@ -69,4 +69,8 @@ def no_new_cases_count(day: int, month: int, year: int = 2020) -> int:
     """
     
     # Your code goes here (remove pass)
-    pass
+    if (day - 1) <= 0:
+      return
+    poprzedniaData = f"{month}/{day - 1}/{year%100}"
+    data = f"{month}/{day}/{year%100}"
+    return ((confirmed_cases[data] - confirmed_cases[poprzedniaData]) != 0).sum()
